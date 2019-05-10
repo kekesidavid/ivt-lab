@@ -14,22 +14,22 @@ public class GT4500Test {
 
   @BeforeEach
   public void init(){
-    this.ship = new GT4500();
     mockTS1 = mock(TorpedoStore.class);
     mockTS2 = mock(TorpedoStore.class);
+    this.ship = new GT4500(mockTS1, mockTS2);
   }
 
   @Test
   public void fireTorpedo_Single_Success(){
     // Arrange
-    when(mockDA.fireTorpedo(FiringMode.SINGLE).thenReturn(true);
-    
+    when(mockTS1.fire(1)).thenReturn(true);
+
     // Act
     boolean result = ship.fireTorpedo(FiringMode.SINGLE);
     // Assert
     assertEquals(true, result);
 
-    verify(mockTS1, times(1)).fireTorpedo(FiringMode.SINGLE);
+    verify(mockTS1, times(1)).fire(1);
   }
 
   @Test
