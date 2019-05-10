@@ -48,6 +48,42 @@ public class GT4500Test {
     verify(mockTS2, times(1)).fire(1);
   }
 
+  @Test
+  public void fireTorpedo_Multi3_Success(){
+    // Arrange
+    when(mockTS1.fire(1)).thenReturn(true);
+    when(mockTS2.fire(1)).thenReturn(true);
+
+    // Act
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+    result = ship.fireTorpedo(FiringMode.SINGLE);
+    result = ship.fireTorpedo(FiringMode.SINGLE);
+    // Assert
+    assertEquals(true, result);
+
+    verify(mockTS1, times(2)).fire(1);
+    verify(mockTS2, times(1)).fire(1);
+  }
+
+  @Test
+  public void fireTorpedo_Multi5_Success(){
+    // Arrange
+    when(mockTS1.fire(1)).thenReturn(true);
+    when(mockTS2.fire(1)).thenReturn(true);
+
+    // Act
+    boolean result = ship.fireTorpedo(FiringMode.SINGLE);
+    result = ship.fireTorpedo(FiringMode.SINGLE);
+    result = ship.fireTorpedo(FiringMode.SINGLE);
+    result = ship.fireTorpedo(FiringMode.SINGLE);
+    result = ship.fireTorpedo(FiringMode.SINGLE);
+    // Assert
+    assertEquals(true, result);
+
+    verify(mockTS1, times(3)).fire(1);
+    verify(mockTS2, times(2)).fire(1);
+  }
+
 
 
 }
